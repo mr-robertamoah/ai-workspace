@@ -150,12 +150,20 @@ NEXT_STEPS_TEMPLATE = """# Next Steps
 3. Continue the next validated step.
 """
 
-GENERATED_REPO_MAP_TEMPLATE = """# Generated Repo Map
+GENERATED_REPO_MAP_TEMPLATE = """---
+managed_by: system
+regeneration: allowed
+---
+# Generated Repo Map
 
 Auto-generated placeholder. Run `ai-workspace summarize` to refresh.
 """
 
-DEPENDENCY_SUMMARY_TEMPLATE = """# Dependency Summary
+DEPENDENCY_SUMMARY_TEMPLATE = """---
+managed_by: system
+regeneration: allowed
+---
+# Dependency Summary
 
 Auto-generated placeholder. Run `ai-workspace summarize` to refresh.
 """

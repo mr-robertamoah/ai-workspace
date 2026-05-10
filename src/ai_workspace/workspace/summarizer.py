@@ -21,7 +21,7 @@ _DIR_ANNOTATIONS = {
 def generate_repo_map(root: Path, max_depth: int = 2) -> str:
     """Markdown directory tree, excluding noise, annotating known dirs."""
 
-    lines = [f"# Repo Map: {root.name}\n"]
+    lines = ["---\nmanaged_by: system\nregeneration: allowed\n---\n", f"# Repo Map: {root.name}\n"]
 
     def _walk(path: Path, depth: int, prefix: str) -> None:
         if depth > max_depth:
@@ -52,7 +52,10 @@ def generate_repo_map(root: Path, max_depth: int = 2) -> str:
 def generate_dependency_summary(root: Path) -> str:
     """Markdown summary of all detected dependencies."""
 
-    sections: list[str] = ["# Dependency Summary\n"]
+    sections: list[str] = [
+        "---\nmanaged_by: system\nregeneration: allowed\n---\n",
+        "# Dependency Summary\n",
+    ]
 
     # requirements.txt
     req = root / "requirements.txt"
@@ -132,7 +135,7 @@ def generate_dependency_summary(root: Path) -> str:
             sections.extend(f"- `{r}`" for r in requires)
             sections.append("")
 
-    if len(sections) == 1:
+    if len(sections) == 2:  # only front matter + heading
         sections.append("No known dependency files detected.\n")
 
     return "\n".join(sections)

@@ -207,4 +207,31 @@ def validate_workspace(root: Path) -> list[ValidationResult]:
     except Exception:
         pass
 
+    # 9. Ownership check — warn if system-managed content found outside .ai/generated/
+    human_dirs = [ai_dir / d for d in ("active-task", "handoffs", "context", "templates")]
+    human_dirs.append(ai_dir)  # top-level .ai/ files
+    for check_dir in human_dirs:
+        if not check_dir.is_dir():
+            continue
+        for path in check_dir.glob("*.md"):
+            try:
+                if "managed_by: system" in path.read_text(encoding="utf-8", errors="ignore"):
+                    results.append(
+                        ValidationResult(
+                            check="ownership",
+                            status="warn",
+                            message=f"System-managed file found outside generated/: {path.relative_to(ai_dir)}",
+                        )
+                    )
+                    break
+            except OSError:
+                continue
+        else:
+            continue
+        break
+    else:
+        results.append(
+            ValidationResult(check="ownership", status="pass", message="No ownership violations")
+        )
+
     return results
