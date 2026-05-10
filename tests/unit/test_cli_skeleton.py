@@ -11,9 +11,9 @@ runner = CliRunner()
 def test_all_commands_registered_and_produce_output() -> None:
     """All commands are implemented; they produce output when invoked."""
     cases = [
-        ["adopt"],           # exits non-zero (no workspace.yaml)
-        ["summarize"],       # exits non-zero (no workspace)
-        ["validate"],        # exits non-zero (no workspace)
+        ["adopt"],  # exits non-zero (no workspace.yaml)
+        ["summarize"],  # exits non-zero (no workspace)
+        ["validate"],  # exits non-zero (no workspace)
         ["validate", "security"],
         ["skills", "list"],
         ["skills", "search", "python"],
