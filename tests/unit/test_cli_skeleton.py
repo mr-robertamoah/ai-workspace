@@ -11,7 +11,6 @@ runner = CliRunner()
 @pytest.mark.parametrize(
     "args",
     [
-        ["adopt"],
         ["validate"],
         ["validate", "security"],
         ["summarize"],
@@ -30,6 +29,12 @@ def test_registered_commands_exit_successfully_and_print_output(args: list[str])
     assert result.exit_code == 0
     assert result.output.strip()
     assert "Not yet implemented" in result.output
+
+
+def test_adopt_command_registered_and_prints_output() -> None:
+    """adopt is fully implemented; without workspace.yaml it exits non-zero with an error."""
+    result = runner.invoke(app, ["adopt"], prog_name="ai-workspace")
+    assert result.output.strip()
 
 
 def test_root_help_exits_zero_and_contains_program_name() -> None:
