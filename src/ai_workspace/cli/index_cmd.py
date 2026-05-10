@@ -16,7 +16,7 @@ app = typer.Typer(help="Manage workspace indexes.", invoke_without_command=True)
 
 
 def _not_implemented() -> None:
-    console.print("[yellow]Not yet implemented[/yellow]")
+    console.print("Use a subcommand. Run with --help for options.")
 
 
 @app.callback()

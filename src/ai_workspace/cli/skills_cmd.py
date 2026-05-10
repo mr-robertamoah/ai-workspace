@@ -47,7 +47,7 @@ def _skills_table(skills: list[SkillMetadata], title: str = "Skills") -> Table:
 @app.callback()
 def skills_callback(ctx: typer.Context) -> None:
     if ctx.invoked_subcommand is None:
-        console.print("[yellow]Not yet implemented[/yellow]")
+        console.print("Use a subcommand. Run with --help for options.")
 
 
 @app.command("list")

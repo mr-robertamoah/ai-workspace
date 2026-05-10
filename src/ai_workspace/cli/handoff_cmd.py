@@ -16,7 +16,7 @@ app = typer.Typer(help="Generate and manage handoffs.", invoke_without_command=T
 @app.callback()
 def handoff_callback(ctx: typer.Context) -> None:
     if ctx.invoked_subcommand is None:
-        console.print("[yellow]Not yet implemented[/yellow]")
+        console.print("Use a subcommand. Run with --help for options.")
 
 
 @app.command("generate")

@@ -3,7 +3,7 @@
 ## Install
 
 ```bash
-git clone <repo-url> ai-workspace
+git clone https://github.com/mr-robertamoah/ai-workspace.git ai-workspace
 cd ai-workspace
 python3 -m venv .venv
 .venv/bin/pip install -e ".[dev]"

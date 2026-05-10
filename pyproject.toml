@@ -34,8 +34,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/example/ai-workspace"
-Repository = "https://github.com/example/ai-workspace"
+Homepage = "https://github.com/mr-robertamoah/ai-workspace"
+Repository = "https://github.com/mr-robertamoah/ai-workspace"
 
 [project.scripts]
 ai-workspace = "ai_workspace.cli.main:app"

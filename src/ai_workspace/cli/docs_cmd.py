@@ -20,7 +20,7 @@ app = typer.Typer(help="Manage documentation helpers.", invoke_without_command=T
 @app.callback()
 def docs_callback(ctx: typer.Context) -> None:
     if ctx.invoked_subcommand is None:
-        console.print("[yellow]Not yet implemented[/yellow]")
+        console.print("Use a subcommand. Run with --help for options.")
 
 
 @app.command("templates")
