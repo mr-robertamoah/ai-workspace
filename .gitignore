@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.coverage
+htmlcov/
+.pytest_cache/
+.ruff_cache/
+.venv/
+.agents/
+.codex/
+.git-local/
+.local-handoff.md
+.marscode/*
+.sixth/*
+tmp/*

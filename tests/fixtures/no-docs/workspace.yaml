@@ -1,0 +1,14 @@
+workspace:
+  name: no-docs-app
+  type: single
+language:
+  primary: python
+architecture:
+  style: library
+documentation:
+  enabled: false
+  structure: minimal
+standards:
+  testing: pytest
+  formatting: black
+  linting: ruff

@@ -1,0 +1,11 @@
+workspace:
+  name: greenfield-app
+  type: single
+language:
+  primary: python
+architecture:
+  style: monolith
+standards:
+  testing: pytest
+  formatting: black
+  linting: ruff

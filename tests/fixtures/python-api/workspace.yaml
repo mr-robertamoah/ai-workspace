@@ -1,0 +1,28 @@
+workspace:
+  name: python-api
+  type: single
+language:
+  primary: python
+  secondary:
+    - typescript
+architecture:
+  style: modular-monolith
+ai:
+  enabled: true
+  adr: true
+  handoffs: true
+  tasks: true
+  agents:
+    - codex
+    - claude
+documentation:
+  enabled: true
+  structure: standard
+security:
+  enabled: true
+  dependency_scanning: true
+  bandit: true
+standards:
+  testing: pytest
+  formatting: black
+  linting: ruff

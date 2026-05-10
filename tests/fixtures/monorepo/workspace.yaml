@@ -1,0 +1,30 @@
+workspace:
+  name: company-platform
+  type: monorepo
+repositories:
+  - name: api
+    path: apps/api
+  - name: worker
+    path: apps/worker
+language:
+  primary: python
+  secondary:
+    - typescript
+architecture:
+  style: microservices
+ai:
+  enabled: true
+  adr: true
+  handoffs: true
+  tasks: true
+documentation:
+  enabled: true
+  structure: full
+security:
+  enabled: true
+  dependency_scanning: true
+  bandit: true
+standards:
+  testing: pytest
+  formatting: black
+  linting: ruff
