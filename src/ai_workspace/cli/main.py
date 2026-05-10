@@ -11,6 +11,7 @@ from ai_workspace.cli import (
     index_cmd,
     init_cmd,
     skills_cmd,
+    standards_cmd,
     summarize_cmd,
     validate_cmd,
 )
@@ -31,6 +32,7 @@ app.add_typer(index_cmd.app, name="index")
 app.add_typer(skills_cmd.app, name="skills")
 app.add_typer(docs_cmd.app, name="docs")
 app.add_typer(handoff_cmd.app, name="handoff")
+app.add_typer(standards_cmd.app, name="standards")
 
 
 @app.callback(invoke_without_command=True)

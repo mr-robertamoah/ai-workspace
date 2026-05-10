@@ -41,6 +41,7 @@ BASE_AI_DIRECTORIES = [
     ".ai/generated",
     ".ai/context",
     ".ai/templates",
+    ".ai/standards",
     ".ai/cache",
 ]
 
