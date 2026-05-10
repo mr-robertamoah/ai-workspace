@@ -14,7 +14,6 @@ runner = CliRunner()
         ["adopt"],
         ["validate"],
         ["validate", "security"],
-        ["index", "rebuild"],
         ["summarize"],
         ["skills", "list"],
         ["skills", "search"],
