@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import typer
 
 from ai_workspace.cli import (
@@ -42,8 +44,6 @@ def _global_init(ctx: typer.Context) -> None:
 
 
 def _home() -> Path:
-    from pathlib import Path
-
     return Path.home()
 
 

@@ -119,7 +119,9 @@ def test_repo_index_reflects_repositories_from_config(tmp_path: Path) -> None:
     project_root = copy_fixture("monorepo", tmp_path)
     config = load_workspace_yaml(project_root / "workspace.yaml")
     generate_workspace(config, project_root)
-    (project_root / "apps" / "api" / "pyproject.toml").write_text(
+    api_dir = project_root / "apps" / "api"
+    api_dir.mkdir(parents=True, exist_ok=True)
+    (api_dir / "pyproject.toml").write_text(
         "[project]\nname='api'\nversion='0.1.0'\n",
         encoding="utf-8",
     )
