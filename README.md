@@ -80,6 +80,7 @@ ai-workspace skills list
 ai-workspace skills search python
 ai-workspace skills show python-package
 ai-workspace skills propose
+ai-workspace skills accept <name>
 ```
 
 ### Documentation

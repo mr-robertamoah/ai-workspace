@@ -108,5 +108,5 @@ def _update_docs_index(root: Path, doc_path: Path, title: str) -> None:
         data["docs"] = docs
         with index_path.open("w", encoding="utf-8") as fh:
             yaml.dump(data, fh)
-    except Exception:
-        pass
+    except Exception as exc:
+        console.print(f"[yellow][WARN][/yellow] Could not update docs-index.yaml: {exc}")

@@ -15,6 +15,8 @@ class HandoffData:
     blockers: str
     next_steps: str
     tests_passing: bool
+    files_modified: str = "(not specified)"
+    decisions_made: str = "(none)"
 
 
 def _slug(text: str) -> str:
@@ -63,7 +65,7 @@ Session duration: unknown
 
 ## What Was NOT Done
 
-(Fill in incomplete work)
+(not specified)
 
 ## Next Steps
 
@@ -75,15 +77,15 @@ Session duration: unknown
 
 ## Files Modified
 
-(Fill in modified files)
+{data.files_modified}
 
 ## Decisions Made
 
-(Fill in decisions)
+{data.decisions_made}
 
 ## References
 
-(Fill in references)
+(none)
 """
     path.write_text(content, encoding="utf-8")
     _update_task_index(root, timestamp)

@@ -119,6 +119,9 @@ ai-workspace skills show adr-creation
 
 # Propose a new skill (written to <name>-proposed/)
 ai-workspace skills propose --name my-skill --description "My custom workflow" --tags "python,custom"
+
+# Accept a proposed skill (renames <name>-proposed/ to <name>/)
+ai-workspace skills accept my-skill
 ```
 
 ---
@@ -190,7 +193,7 @@ rm .ai/notes.md
 
 ```bash
 ai-workspace handoff generate
-# → prompts for: accomplished, current state, blockers, next steps, tests passing
+# → prompts for: accomplished, current state, blockers, next steps, files modified, decisions made, tests passing
 
 ls .ai/handoffs/
 cat .ai/handoffs/*.md
@@ -237,5 +240,5 @@ ai-workspace handoff generate
 ```bash
 cd <repo>
 .venv/bin/python -m pytest tests/ -q
-# → 189 passed, 83% coverage
+# → 197 passed, 83% coverage
 ```

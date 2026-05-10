@@ -13,6 +13,7 @@ from ai_workspace.core.errors import SkillError
 from ai_workspace.core.paths import global_layer_path
 from ai_workspace.intelligence.skills import (
     SkillMetadata,
+    accept_skill,
     ensure_builtin_skills,
     get_skill,
     list_proposed_skills,
@@ -132,3 +133,19 @@ def skills_propose(
         console.print(f"[red][ERROR][/red] {exc}")
         raise typer.Exit(1)
     console.print(f"[green]Proposed skill written to:[/green] {path}")
+
+
+@app.command("accept")
+def skills_accept(name: str = typer.Argument("")) -> None:
+    """Accept a proposed skill (renames <name>-proposed/ to <name>/)."""
+    if not name:
+        console.print("[red][ERROR][/red] Skill name required.")
+        raise typer.Exit(1)
+    global_root = global_layer_path()
+    _ensure(global_root)
+    try:
+        target = accept_skill(global_root, name)
+    except SkillError as exc:
+        console.print(f"[red][ERROR][/red] {exc}")
+        raise typer.Exit(1)
+    console.print(f"[green]Skill accepted:[/green] {target}")

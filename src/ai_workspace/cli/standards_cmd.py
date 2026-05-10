@@ -24,7 +24,7 @@ app = typer.Typer(help="View and manage engineering standards.", invoke_without_
 @app.callback()
 def standards_callback(ctx: typer.Context) -> None:
     if ctx.invoked_subcommand is None:
-        console.print("[yellow]Not yet implemented[/yellow]")
+        console.print("Use a subcommand: list, show, override")
 
 
 @app.command("list")

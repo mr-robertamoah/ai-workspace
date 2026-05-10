@@ -6,7 +6,6 @@ import os
 from pathlib import Path
 from unittest.mock import patch
 
-
 from ai_workspace.security.scanner import scan_security
 
 

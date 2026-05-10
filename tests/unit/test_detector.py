@@ -5,7 +5,6 @@ from __future__ import annotations
 from pathlib import Path
 from unittest.mock import patch
 
-
 from ai_workspace.workspace.detector import detect_project
 
 PYTHON_API = Path(__file__).parent.parent / "fixtures" / "python-api"

@@ -5,7 +5,6 @@ from __future__ import annotations
 import shutil
 from pathlib import Path
 
-
 from ai_workspace.security.validator import validate_workspace
 
 GREENFIELD = Path(__file__).parent.parent / "fixtures" / "greenfield"

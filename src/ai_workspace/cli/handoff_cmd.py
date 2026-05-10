@@ -32,6 +32,10 @@ def handoff_generate() -> None:
     current_state = typer.prompt("Current state?")
     blockers = typer.prompt("Blockers?", default="None")
     next_steps = typer.prompt("Next steps?")
+    files_modified = typer.prompt(
+        "Files modified? (comma-separated or brief description)", default="(not specified)"
+    )
+    decisions_made = typer.prompt("Decisions made?", default="(none)")
     tests_ok = typer.confirm("Are tests passing?", default=True)
 
     data = HandoffData(
@@ -40,6 +44,8 @@ def handoff_generate() -> None:
         blockers=blockers,
         next_steps=next_steps,
         tests_passing=tests_ok,
+        files_modified=files_modified,
+        decisions_made=decisions_made,
     )
     path = generate_handoff(root, data)
     console.print(f"[green]Handoff written to:[/green] {path}")

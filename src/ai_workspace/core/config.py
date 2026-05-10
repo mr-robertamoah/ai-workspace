@@ -96,9 +96,9 @@ class SecurityConfig(StrictModel):
 class StandardsConfig(StrictModel):
     """Tooling standards for the workspace."""
 
-    testing: TestingStandard
-    formatting: FormattingStandard
-    linting: LintingStandard
+    testing: TestingStandard = "pytest"
+    formatting: FormattingStandard = "black"
+    linting: LintingStandard = "ruff"
 
 
 class WorkspaceConfig(StrictModel):
@@ -107,11 +107,13 @@ class WorkspaceConfig(StrictModel):
     workspace: WorkspaceMetadata
     repositories: list[RepositoryConfig] = Field(default_factory=list)
     language: LanguageConfig
-    architecture: ArchitectureConfig
+    architecture: ArchitectureConfig = Field(
+        default_factory=lambda: ArchitectureConfig(style="modular-monolith")
+    )
     ai: AIConfig = Field(default_factory=AIConfig)
     documentation: DocumentationConfig = Field(default_factory=DocumentationConfig)
     security: SecurityConfig = Field(default_factory=SecurityConfig)
-    standards: StandardsConfig
+    standards: StandardsConfig = Field(default_factory=StandardsConfig)
 
     @field_validator("repositories")
     @classmethod
