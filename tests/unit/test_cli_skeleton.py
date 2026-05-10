@@ -8,41 +8,20 @@ from ai_workspace.cli.main import app
 runner = CliRunner()
 
 
-@pytest.mark.parametrize(
-    "args",
-    [
+def test_all_commands_registered_and_produce_output() -> None:
+    """All commands are implemented; they produce output when invoked."""
+    cases = [
+        ["adopt"],           # exits non-zero (no workspace.yaml)
+        ["summarize"],       # exits non-zero (no workspace)
+        ["validate"],        # exits non-zero (no workspace)
+        ["validate", "security"],
+        ["skills", "list"],
+        ["skills", "search", "python"],
         ["docs", "templates"],
-        ["docs", "create"],
-        ["handoff", "generate"],
-    ],
-)
-def test_registered_commands_exit_successfully_and_print_output(args: list[str]) -> None:
-    result = runner.invoke(app, args, prog_name="ai-workspace")
-
-    assert result.exit_code == 0
-    assert result.output.strip()
-    assert "Not yet implemented" in result.output
-
-
-def test_adopt_command_registered_and_prints_output() -> None:
-    result = runner.invoke(app, ["adopt"], prog_name="ai-workspace")
-    assert result.output.strip()
-
-
-def test_summarize_command_registered_and_prints_output() -> None:
-    result = runner.invoke(app, ["summarize"], prog_name="ai-workspace")
-    assert result.output.strip()
-
-
-def test_skills_commands_registered_and_print_output() -> None:
-    for args in [["skills", "list"], ["skills", "search", "python"]]:
-        result = runner.invoke(app, args, prog_name="ai-workspace")
-        assert result.output.strip(), f"No output for {args}"
-
-
-def test_validate_commands_registered_and_print_output() -> None:
-    """validate commands are implemented; outside a workspace they exit non-zero."""
-    for args in [["validate"], ["validate", "security"]]:
+        ["docs", "create"],  # exits non-zero (no template name)
+        ["handoff", "generate"],  # exits non-zero (no workspace)
+    ]
+    for args in cases:
         result = runner.invoke(app, args, prog_name="ai-workspace")
         assert result.output.strip(), f"No output for {args}"
 
