@@ -56,6 +56,16 @@ branch = true
 [tool.ruff]
 line-length = 100
 
+[tool.ruff.lint]
+select = ["E", "F", "TID"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["TID251"]
+"src/ai_workspace/cli/**" = ["TID251"]
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"ai_workspace.cli".msg = "Business logic must not import from cli (presentation layer)."
 [tool.black]
 line-length = 100
 target-version = ["py312"]
