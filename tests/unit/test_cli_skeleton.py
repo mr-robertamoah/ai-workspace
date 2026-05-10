@@ -13,10 +13,6 @@ runner = CliRunner()
     [
         ["validate"],
         ["validate", "security"],
-        ["skills", "list"],
-        ["skills", "search"],
-        ["skills", "show"],
-        ["skills", "propose"],
         ["docs", "templates"],
         ["docs", "create"],
         ["handoff", "generate"],
@@ -40,6 +36,13 @@ def test_summarize_command_registered_and_prints_output() -> None:
     """summarize is fully implemented; outside a workspace it exits non-zero with an error."""
     result = runner.invoke(app, ["summarize"], prog_name="ai-workspace")
     assert result.output.strip()
+
+
+def test_skills_commands_registered_and_print_output() -> None:
+    """skills commands are fully implemented; they produce output."""
+    for args in [["skills", "list"], ["skills", "search", "python"]]:
+        result = runner.invoke(app, args, prog_name="ai-workspace")
+        assert result.output.strip(), f"No output for {args}"
 
 
 def test_root_help_exits_zero_and_contains_program_name() -> None:

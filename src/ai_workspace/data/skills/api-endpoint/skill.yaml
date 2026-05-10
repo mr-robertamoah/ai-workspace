@@ -1,0 +1,16 @@
+name: api-endpoint
+version: "1.0.0"
+description: |
+  REST API endpoint implementation workflow with validation and tests.
+tags:
+  - api
+  - rest
+  - backend
+author: human
+status: active
+created_at: "2025-01-01T00:00:00Z"
+updated_at: "2025-01-01T00:00:00Z"
+validation:
+  - python -m pytest tests/
+related_skills:
+  - python-package

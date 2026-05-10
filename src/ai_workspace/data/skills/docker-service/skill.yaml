@@ -1,0 +1,17 @@
+name: docker-service
+version: "1.0.0"
+description: |
+  Dockerfile and docker-compose service implementation workflow.
+tags:
+  - docker
+  - containers
+  - devops
+author: human
+status: active
+created_at: "2025-01-01T00:00:00Z"
+updated_at: "2025-01-01T00:00:00Z"
+validation:
+  - docker build .
+  - docker-compose config
+related_skills:
+  - terraform-module

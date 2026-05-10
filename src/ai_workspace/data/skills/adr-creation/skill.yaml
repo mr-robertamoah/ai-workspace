@@ -1,0 +1,14 @@
+name: adr-creation
+version: "1.0.0"
+description: |
+  How to write a good Architecture Decision Record (ADR).
+tags:
+  - adr
+  - documentation
+  - architecture
+author: human
+status: active
+created_at: "2025-01-01T00:00:00Z"
+updated_at: "2025-01-01T00:00:00Z"
+validation: []
+related_skills: []

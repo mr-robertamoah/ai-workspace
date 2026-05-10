@@ -1,0 +1,17 @@
+name: terraform-module
+version: "1.0.0"
+description: |
+  Standard reusable Terraform module implementation workflow.
+tags:
+  - terraform
+  - infrastructure
+  - iac
+author: human
+status: active
+created_at: "2025-01-01T00:00:00Z"
+updated_at: "2025-01-01T00:00:00Z"
+validation:
+  - terraform fmt
+  - terraform validate
+related_skills:
+  - docker-service
