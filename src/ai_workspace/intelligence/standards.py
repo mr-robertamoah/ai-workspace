@@ -4,7 +4,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-_BUILTIN = Path(__file__).parent.parent / "data" / "standards"
+from ai_workspace.core.bundle import data_path
+
+_BUILTIN = data_path("standards")
 _GLOBAL_SUBDIR = "standards"
 _WORKSPACE_SUBDIR = ".ai/standards"
 

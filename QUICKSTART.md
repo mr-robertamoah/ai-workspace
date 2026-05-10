@@ -2,17 +2,40 @@
 
 ## Install
 
+### Option A — pipx (recommended)
+
 ```bash
-git clone https://github.com/mr-robertamoah/ai-workspace.git ai-workspace
-cd ai-workspace
-python3 -m venv .venv
-.venv/bin/pip install -e ".[dev]"
+sudo apt install pipx
+pipx ensurepath   # reload shell after
+pipx install git+https://github.com/mr-robertamoah/ai-workspace.git
+```
+
+### Option B — install script (auto-detects pipx, falls back to managed venv)
+
+```bash
+git clone https://github.com/mr-robertamoah/ai-workspace.git
+bash ai-workspace/scripts/install.sh
+```
+
+### Option C — pre-built binary (no Python required)
+
+```bash
+curl -L https://github.com/mr-robertamoah/ai-workspace/releases/latest/download/ai-workspace-linux-amd64 \
+  -o ~/.local/bin/ai-workspace && chmod +x ~/.local/bin/ai-workspace
+```
+
+### Option D — development install (editable)
+
+```bash
+git clone https://github.com/mr-robertamoah/ai-workspace.git
+bash ai-workspace/scripts/install.sh --dev
+source ai-workspace/.venv/bin/activate
 ```
 
 Verify:
 
 ```bash
-.venv/bin/ai-workspace --help
+ai-workspace --help
 ```
 
 ---

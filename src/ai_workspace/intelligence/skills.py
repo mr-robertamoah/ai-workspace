@@ -9,6 +9,7 @@ from pathlib import Path
 from pydantic import BaseModel, ConfigDict, field_validator
 from ruamel.yaml import YAML
 
+from ai_workspace.core.bundle import data_path
 from ai_workspace.core.errors import SkillError
 from ai_workspace.intelligence.indexes import rebuild_global_indexes
 
@@ -16,7 +17,7 @@ _yaml = YAML(typ="safe")
 _yaml_w = YAML()
 _yaml_w.default_flow_style = False
 
-_BUILTIN_SKILLS = Path(__file__).parent.parent / "data" / "skills"
+_BUILTIN_SKILLS = data_path("skills")
 
 
 class SkillMetadata(BaseModel):

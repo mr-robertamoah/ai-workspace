@@ -19,17 +19,37 @@ It solves three problems: context loss between agent sessions, knowledge fragmen
 
 ## Installation
 
-### pip install
+### pipx (recommended — isolated, no venv management)
 
 ```bash
-pip install ai-workspace
+sudo apt install pipx
+pipx ensurepath   # reload shell after
+pipx install git+https://github.com/mr-robertamoah/ai-workspace.git
+```
+
+### Install script (auto-detects pipx, falls back to managed venv)
+
+```bash
+git clone https://github.com/mr-robertamoah/ai-workspace.git
+bash ai-workspace/scripts/install.sh
+```
+
+### Pre-built binary (no Python required)
+
+Download the latest binary from [GitHub Releases](https://github.com/mr-robertamoah/ai-workspace/releases):
+
+```bash
+# Linux
+curl -L https://github.com/mr-robertamoah/ai-workspace/releases/latest/download/ai-workspace-linux-amd64 \
+  -o ~/.local/bin/ai-workspace && chmod +x ~/.local/bin/ai-workspace
 ```
 
 ### Development install (editable)
 
 ```bash
-python3 -m venv .venv
-.venv/bin/pip install -e ".[dev]"
+git clone https://github.com/mr-robertamoah/ai-workspace.git
+bash ai-workspace/scripts/install.sh --dev
+source ai-workspace/.venv/bin/activate
 ```
 
 ## Quick Start
