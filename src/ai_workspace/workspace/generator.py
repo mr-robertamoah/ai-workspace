@@ -232,6 +232,20 @@ def generate_workspace(
         _write_yaml(path, {**payload, "generated_at": timestamp}, overwrite=force)
         created_paths.append(path)
 
+    # Write workspace version file
+    version_path = project_root / ".ai" / "version.yaml"
+    _write_yaml(
+        version_path,
+        {
+            "tool_version": "0.1.0",
+            "schema_version": 1,
+            "created_at": timestamp,
+            "last_updated": timestamp,
+        },
+        overwrite=force,
+    )
+    created_paths.append(version_path)
+
     for directory in empty_directories(config):
         gitkeep = project_root / directory / ".gitkeep"
         if not gitkeep.exists() or force:

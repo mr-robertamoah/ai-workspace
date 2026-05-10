@@ -30,8 +30,46 @@ def _load_yaml_safe(path: Path) -> tuple[dict | None, str | None]:
         return None, str(exc)
 
 
+CURRENT_SCHEMA_VERSION = 1
+
+
 def validate_workspace(root: Path) -> list[ValidationResult]:
     results: list[ValidationResult] = []
+
+    # 0. Version check
+    version_file = root / ".ai" / "version.yaml"
+    if version_file.exists():
+        data, err = _load_yaml_safe(version_file)
+        if err:
+            results.append(
+                ValidationResult(
+                    check="version", status="warn", message=f"Could not read version.yaml: {err}"
+                )
+            )
+        else:
+            schema_ver = (data or {}).get("schema_version", 1)
+            if schema_ver < CURRENT_SCHEMA_VERSION:
+                results.append(
+                    ValidationResult(
+                        check="version",
+                        status="warn",
+                        message=f"Workspace schema v{schema_ver} is older than current v{CURRENT_SCHEMA_VERSION}. Run `ai-workspace init --force` to upgrade.",
+                    )
+                )
+            else:
+                results.append(
+                    ValidationResult(
+                        check="version", status="pass", message=f"Schema v{schema_ver} is current"
+                    )
+                )
+    else:
+        results.append(
+            ValidationResult(
+                check="version",
+                status="warn",
+                message=".ai/version.yaml not found — workspace predates versioning",
+            )
+        )
 
     # 1. workspace.yaml exists and loads
     ws_yaml = root / "workspace.yaml"
