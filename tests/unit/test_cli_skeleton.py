@@ -13,7 +13,6 @@ runner = CliRunner()
     [
         ["validate"],
         ["validate", "security"],
-        ["summarize"],
         ["skills", "list"],
         ["skills", "search"],
         ["skills", "show"],
@@ -34,6 +33,12 @@ def test_registered_commands_exit_successfully_and_print_output(args: list[str])
 def test_adopt_command_registered_and_prints_output() -> None:
     """adopt is fully implemented; without workspace.yaml it exits non-zero with an error."""
     result = runner.invoke(app, ["adopt"], prog_name="ai-workspace")
+    assert result.output.strip()
+
+
+def test_summarize_command_registered_and_prints_output() -> None:
+    """summarize is fully implemented; outside a workspace it exits non-zero with an error."""
+    result = runner.invoke(app, ["summarize"], prog_name="ai-workspace")
     assert result.output.strip()
 
 
